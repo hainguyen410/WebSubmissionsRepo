@@ -9,11 +9,13 @@ const Button = ({onClick, text}) => {
   return (<button onClick={onClick}>{text}</button>)
 }
 
-const Display = ({text, count}) => {
-  return (<p>
-    {text} {count}
-  </p>)
+const StatisticLine = ({text, count}) => {
+  return (<tr>
+    <td>{text}</td>
+    <td>{count}</td>
+  </tr>)
 }
+
 
 const Statistics = ({good, neutral, bad}) => {
   const all = good + neutral + bad;
@@ -25,13 +27,16 @@ const Statistics = ({good, neutral, bad}) => {
   }
   return (
     <div>
-      <Display text="good" count={good}/>
-      <Display text="neutral" count={neutral}/>
-      <Display text="bad" count={bad}/>
-      <Display text="all" count={all}/>
-      <Display text="average" count={average}/>
-      <Display text="positive" count={positive}/>
-      
+      <table>
+        <tbody>
+          <StatisticLine text="good" count={good}/>
+          <StatisticLine text="neutral" count={neutral}/>
+          <StatisticLine text="bad" count={bad}/>
+          <StatisticLine text="all" count={all}/>
+          <StatisticLine text="average" count={average}/>
+          <StatisticLine text="positive" count={positive}/>
+        </tbody>
+      </table>
     </div>
   )
 }
