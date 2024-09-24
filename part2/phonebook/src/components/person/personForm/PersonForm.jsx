@@ -1,4 +1,5 @@
 import { useState } from "react"
+import phoneService from "../../services/phone"
 
 const PersonForm = ({persons, setPersons}) => {
     const [newName, setNewName] = useState('')
@@ -13,7 +14,16 @@ const PersonForm = ({persons, setPersons}) => {
             alert(`${newName} is already added to phonebook`)
             return;
         }
-        setPersons([...persons, {name: newName, phone: newPhone }])
+
+        const newPerson = {name: newName, number: newPhone}
+
+        phoneService
+          .addPhone(newPerson)
+          .then(response => {
+            console.log(response.data)
+            
+          })
+        // setPersons([...persons, {name: newName, phone: newPhone }])
         }
     
     return (<form onSubmit={addPerson}>

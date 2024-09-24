@@ -1,5 +1,5 @@
-const Display = ({person}) => {
-    return (<p>{person.name} {person.phone}</p>)
+const Display = ({person, deletePhone}) => {
+    return <p>{person.name} {person.phone} <button onClick={deletePhone}>Delete</button> </p>
 }
 
 export default Display
