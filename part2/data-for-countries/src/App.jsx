@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       find countries <input type="text" value={searchCountry} onChange={(e) => setSearchCountry(e.target.value)}/>
-      <Display searchCountry={searchCountry}/>
+      <Display searchCountry={searchCountry} setSearchCountry={setSearchCountry}/>
     </div>
   )
 }
