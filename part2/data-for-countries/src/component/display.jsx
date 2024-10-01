@@ -18,13 +18,12 @@ const Display = ({searchCountry, setSearchCountry}) => {
     
 
     const displayCountries = data.filter(country => country.name.common.toLowerCase().includes(searchCountry.toLowerCase()));
-    console.log(displayCountries)
+
     
     if (displayCountries.length > 10) {
         return (<p>Too many matches, specify another filter</p>)
     } else if (displayCountries.length> 1) {
         return (<ul>{(displayCountries.map(country => {
-                        console.log(country.name.common)
                     return <li key={country.cca3}>{country.name.common} <button onClick={()=>setSearchCountry(country.name.common)}>show</button></li>
                     }))}
                 </ul>)
