@@ -1,11 +1,13 @@
 import { useState } from "react"
 import phoneService from "../../services/phone"
 
-const PersonForm = ({persons, setPersons}) => {
+const PersonForm = ({persons, setPersons, setNotification, setIsNotificationVisible}) => {
     const [newName, setNewName] = useState('')
     const [newPhone, setNewPhone] = useState('')
     const addPerson = (e) => {
         e.preventDefault()
+
+        
         
         //check if this person already added or not
         if (persons.some((person) => {
@@ -16,12 +18,13 @@ const PersonForm = ({persons, setPersons}) => {
         }
 
         const newPerson = {name: newName, number: newPhone}
-
         phoneService
-          .addPhone(newPerson)
-          .then(response => {
-            console.log(response.data)
-            
+        .addPhone(newPerson)
+        .then(response => {
+          console.log(response.data)
+          setNotification(`added ${newPerson.name}`)
+          setIsNotificationVisible(true)
+          setTimeout(()=>setIsNotificationVisible(false), 3000)
           })
         // setPersons([...persons, {name: newName, phone: newPhone }])
         }
